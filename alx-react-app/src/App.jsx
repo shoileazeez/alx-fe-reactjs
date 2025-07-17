@@ -5,6 +5,7 @@ import WelcomeMessage from './components/WelcomeMessage.jsx';
 import Footer from './components/Footer.jsx';
 import MainContent    from './components/MainContent.jsx';
 import Header from './components/Header.jsx';
+import  UserProfile from './components/UserProfile.jsx';
 import './App.css'
 
 function App() {
@@ -36,6 +37,8 @@ function App() {
       <Header />
       <MainContent  />
       <Footer />
+      <UserProfile name="John Doe" age={30} bio="Avid traveler and city explorer." />
+      <h2>My Favorite Cities</h2>
       <p>Learn React</p>
     </>
   )
