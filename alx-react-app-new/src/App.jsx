@@ -6,6 +6,7 @@ import Footer from './components/Footer.jsx';
 import MainContent from './components/MainContent.jsx';
 import Header from './components/Header.jsx';
 import UserProfile from './components/UserProfile.jsx';
+import Counter from './components/Counter.jsx'
 import './App.css'
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
       <Header />
       <MainContent />
       <Footer />
+      <Counter/>
       <UserProfile name="Alice" age="25" bio="Loves hiking and photography" />
       <h2>My Favorite Cities</h2>
       <p>Learn React</p>
