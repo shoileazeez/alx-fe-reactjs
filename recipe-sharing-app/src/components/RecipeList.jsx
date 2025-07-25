@@ -1,8 +1,15 @@
-import useRecipeStore from './recipeStore';
+import { Link } from 'react-router-dom';
+import useRecipeStore from '../recipeStore';
 
 const RecipeList = () => {
   const recipes = useRecipeStore(state => state.recipes);
   const deleteRecipe = useRecipeStore(state => state.deleteRecipe);
+
+  const handleDelete = (id) => {
+    if (window.confirm('Are you sure you want to delete this recipe?')) {
+      deleteRecipe(id);
+    }
+  };
 
   return (
     <div style={{
@@ -48,23 +55,45 @@ const RecipeList = () => {
                 color: '#666',
                 lineHeight: '1.6',
                 marginBottom: '15px'
-              }}>{recipe.description}</p>
-              <button 
-                onClick={() => deleteRecipe(recipe.id)}
-                style={{
-                  backgroundColor: '#e74c3c',
-                  color: 'white',
-                  border: 'none',
-                  padding: '8px 16px',
-                  borderRadius: '4px',
-                  cursor: 'pointer',
-                  fontSize: '14px'
-                }}
-                onMouseOver={(e) => e.target.style.backgroundColor = '#c0392b'}
-                onMouseOut={(e) => e.target.style.backgroundColor = '#e74c3c'}
-              >
-                Delete Recipe
-              </button>
+              }}>{recipe.description.substring(0, 100)}...</p>
+              
+              <div style={{
+                display: 'flex',
+                gap: '10px',
+                marginTop: '15px'
+              }}>
+                <Link 
+                  to={`/recipe/${recipe.id}`}
+                  style={{
+                    backgroundColor: '#3498db',
+                    color: 'white',
+                    textDecoration: 'none',
+                    padding: '8px 16px',
+                    borderRadius: '4px',
+                    fontSize: '14px',
+                    display: 'inline-block'
+                  }}
+                >
+                  View Details
+                </Link>
+                
+                <button 
+                  onClick={() => handleDelete(recipe.id)}
+                  style={{
+                    backgroundColor: '#e74c3c',
+                    color: 'white',
+                    border: 'none',
+                    padding: '8px 16px',
+                    borderRadius: '4px',
+                    cursor: 'pointer',
+                    fontSize: '14px'
+                  }}
+                  onMouseOver={(e) => e.target.style.backgroundColor = '#c0392b'}
+                  onMouseOut={(e) => e.target.style.backgroundColor = '#e74c3c'}
+                >
+                  Delete Recipe
+                </button>
+              </div>
             </div>
           ))}
         </div>
