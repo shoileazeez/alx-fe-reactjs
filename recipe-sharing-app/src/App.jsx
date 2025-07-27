@@ -3,26 +3,57 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import AddRecipeForm from './components/AddRecipeForm';
 import RecipeList from './components/RecipeList';
 import RecipeDetails from './components/RecipeDetails';
+import SearchBar from './components/SearchBar';
+import FilterPanel from './components/FilterPanel';
+import useRecipeStore from './recipeStore';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import AddRecipeForm from './components/AddRecipeForm';
+import RecipeList from './components/RecipeList';
+import RecipeDetails from './components/RecipeDetails';
 import useRecipeStore from '.recipeStore';
 import './App.css';
 
 function App() {
   const setRecipes = useRecipeStore(state => state.setRecipes);
 
-  // Initialize with some sample recipes
+  // Initialize with enhanced sample recipes including ingredients and cooking time
   useEffect(() => {
     const sampleRecipes = [
       {
         id: 1,
         title: "Classic Chocolate Chip Cookies",
-        description: "Delicious homemade chocolate chip cookies that are crispy on the outside and chewy on the inside. Perfect for any occasion! Ingredients: flour, butter, sugar, brown sugar, eggs, vanilla extract, baking soda, salt, chocolate chips. Instructions: 1. Preheat oven to 375°F. 2. Mix butter and sugars until creamy. 3. Beat in eggs and vanilla. 4. Gradually add flour mixture. 5. Stir in chocolate chips. 6. Drop rounded tablespoons on ungreased cookie sheets. 7. Bake 9-11 minutes until golden brown.",
-        createdAt: Date.now() - 86400000 // 1 day ago
+        description: "Delicious homemade chocolate chip cookies that are crispy on the outside and chewy on the inside. Perfect for any occasion! These cookies are made with brown butter for extra flavor and use a mix of chocolate chips and chunks for the perfect texture.",
+        ingredients: ["flour", "butter", "sugar", "brown sugar", "eggs", "vanilla extract", "baking soda", "salt", "chocolate chips"],
+        cookingTime: 25,
+        difficulty: "Easy",
+        createdAt: Date.now() - 86400000
       },
       {
         id: 2,
         title: "Spaghetti Carbonara",
-        description: "A traditional Italian pasta dish made with eggs, cheese, pancetta, and pepper. Simple yet incredibly flavorful. Ingredients: spaghetti, eggs, pecorino romano cheese, pancetta, black pepper, salt. Instructions: 1. Cook pasta according to package directions. 2. Cook pancetta until crispy. 3. Beat eggs with cheese and pepper. 4. Toss hot pasta with pancetta. 5. Remove from heat and quickly mix in egg mixture. 6. Serve immediately with extra cheese and pepper.",
-        createdAt: Date.now() - 172800000 // 2 days ago
+        description: "A traditional Italian pasta dish made with eggs, cheese, pancetta, and pepper. Simple yet incredibly flavorful. This authentic Roman recipe uses no cream - just perfectly silky eggs and cheese.",
+        ingredients: ["spaghetti", "eggs", "pecorino romano cheese", "pancetta", "black pepper", "salt"],
+        cookingTime: 20,
+        difficulty: "Medium",
+        createdAt: Date.now() - 172800000
+      },
+      {
+        id: 3,
+        title: "Quick Avocado Toast",
+        description: "Healthy and delicious avocado toast perfect for breakfast or a light lunch. Topped with everything bagel seasoning and a drizzle of olive oil.",
+        ingredients: ["bread", "avocado", "lemon juice", "salt", "everything bagel seasoning", "olive oil"],
+        cookingTime: 5,
+        difficulty: "Easy",
+        createdAt: Date.now() - 259200000
+      },
+      {
+        id: 4,
+        title: "Homemade Pizza Margherita",
+        description: "Classic Italian pizza with fresh tomatoes, mozzarella, and basil. Made with homemade dough for the perfect crispy yet chewy crust.",
+        ingredients: ["pizza dough", "tomato sauce", "mozzarella cheese", "fresh basil", "olive oil", "garlic", "salt"],
+        cookingTime: 45,
+        difficulty: "Medium",
+        createdAt: Date.now() - 345600000
       }
     ];
     setRecipes(sampleRecipes);
@@ -73,6 +104,8 @@ function App() {
           <Routes>
             <Route path="/" element={
               <>
+                <SearchBar />
+                <FilterPanel />
                 <AddRecipeForm />
                 <RecipeList />
               </>

@@ -1,15 +1,21 @@
 import { Link } from 'react-router-dom';
-import useRecipeStore from '.components/recipeStore';
+import useRecipeStore from '../recipeStore';
 
 const RecipeList = () => {
-  const recipes = useRecipeStore(state => state.recipes);
-  const deleteRecipe = useRecipeStore(state => state.deleteRecipe);
+  const { filteredRecipes, searchTerm, deleteRecipe } = useRecipeStore(state => ({
+    filteredRecipes: state.filteredRecipes,
+    searchTerm: state.searchTerm,
+    deleteRecipe: state.deleteRecipe
+  }));
 
   const handleDelete = (id) => {
     if (window.confirm('Are you sure you want to delete this recipe?')) {
       deleteRecipe(id);
     }
   };
+
+  // Use filteredRecipes instead of all recipes
+  const recipesToDisplay = filteredRecipes;
 
   return (
     <div style={{
@@ -21,24 +27,50 @@ const RecipeList = () => {
         color: '#333',
         textAlign: 'center',
         marginBottom: '30px'
-      }}>Recipe Collection</h2>
+      }}>
+        {searchTerm ? `Search Results (${recipesToDisplay.length})` : `Recipe Collection (${recipesToDisplay.length})`}
+      </h2>
       
-      {recipes.length === 0 ? (
-        <p style={{
+      {recipesToDisplay.length === 0 ? (
+        <div style={{
           textAlign: 'center',
-          color: '#666',
-          fontSize: '18px',
-          padding: '40px'
+          padding: '40px',
+          backgroundColor: '#f8f9fa',
+          borderRadius: '8px',
+          border: '1px solid #dee2e6'
         }}>
-          No recipes yet. Add your first recipe below!
-        </p>
+          {searchTerm ? (
+            <div>
+              <p style={{
+                color: '#666',
+                fontSize: '18px',
+                marginBottom: '10px'
+              }}>
+                No recipes found matching your search criteria.
+              </p>
+              <p style={{
+                color: '#888',
+                fontSize: '14px'
+              }}>
+                Try adjusting your search terms or filters.
+              </p>
+            </div>
+          ) : (
+            <p style={{
+              color: '#666',
+              fontSize: '18px'
+            }}>
+              No recipes yet. Add your first recipe above!
+            </p>
+          )}
+        </div>
       ) : (
         <div style={{
           display: 'grid',
           gap: '20px',
           gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))'
         }}>
-          {recipes.map(recipe => (
+          {recipesToDisplay.map(recipe => (
             <div key={recipe.id} style={{
               border: '1px solid #ddd',
               borderRadius: '8px',
