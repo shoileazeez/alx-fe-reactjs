@@ -5,12 +5,9 @@ import RecipeList from './components/RecipeList';
 import RecipeDetails from './components/RecipeDetails';
 import SearchBar from './components/SearchBar';
 import FilterPanel from './components/FilterPanel';
+import FavoritesList from './components/FavoritesList';
+import RecommendationsList from './components/RecommendationsList';
 import useRecipeStore from './recipeStore';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import AddRecipeForm from './components/AddRecipeForm';
-import RecipeList from './components/RecipeList';
-import RecipeDetails from './components/RecipeDetails';
-import useRecipeStore from '.recipeStore';
 import './App.css';
 
 function App() {
@@ -94,6 +91,55 @@ function App() {
           }}>
             Share and discover amazing recipes
           </p>
+          
+          {/* Navigation */}
+          <nav style={{
+            marginTop: '20px',
+            display: 'flex',
+            justifyContent: 'center',
+            gap: '20px',
+            flexWrap: 'wrap'
+          }}>
+            <Link 
+              to="/" 
+              style={{
+                color: 'white',
+                textDecoration: 'none',
+                padding: '8px 16px',
+                border: '1px solid rgba(255,255,255,0.3)',
+                borderRadius: '4px',
+                transition: 'background-color 0.3s'
+              }}
+            >
+              🏠 Home
+            </Link>
+            <Link 
+              to="/favorites" 
+              style={{
+                color: 'white',
+                textDecoration: 'none',
+                padding: '8px 16px',
+                border: '1px solid rgba(255,255,255,0.3)',
+                borderRadius: '4px',
+                transition: 'background-color 0.3s'
+              }}
+            >
+              ❤️ Favorites
+            </Link>
+            <Link 
+              to="/recommendations" 
+              style={{
+                color: 'white',
+                textDecoration: 'none',
+                padding: '8px 16px',
+                border: '1px solid rgba(255,255,255,0.3)',
+                borderRadius: '4px',
+                transition: 'background-color 0.3s'
+              }}
+            >
+              ⭐ Recommendations
+            </Link>
+          </nav>
         </header>
 
         <main style={{
@@ -111,6 +157,8 @@ function App() {
               </>
             } />
             <Route path="/recipe/:id" element={<RecipeDetails />} />
+            <Route path="/favorites" element={<FavoritesList />} />
+            <Route path="/recommendations" element={<RecommendationsList />} />
           </Routes>
         </main>
 

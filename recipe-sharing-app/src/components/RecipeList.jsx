@@ -2,16 +2,30 @@ import { Link } from 'react-router-dom';
 import useRecipeStore from '../recipeStore';
 
 const RecipeList = () => {
-  const { filteredRecipes, searchTerm, deleteRecipe } = useRecipeStore(state => ({
+  const { 
+    filteredRecipes, 
+    searchTerm, 
+    deleteRecipe, 
+    toggleFavorite, 
+    isFavorite 
+  } = useRecipeStore(state => ({
     filteredRecipes: state.filteredRecipes,
     searchTerm: state.searchTerm,
-    deleteRecipe: state.deleteRecipe
+    deleteRecipe: state.deleteRecipe,
+    toggleFavorite: state.toggleFavorite,
+    isFavorite: state.isFavorite
   }));
 
   const handleDelete = (id) => {
     if (window.confirm('Are you sure you want to delete this recipe?')) {
       deleteRecipe(id);
     }
+  };
+
+  const handleToggleFavorite = (e, recipeId) => {
+    e.preventDefault();
+    e.stopPropagation();
+    toggleFavorite(recipeId);
   };
 
   // Use filteredRecipes instead of all recipes
@@ -76,13 +90,37 @@ const RecipeList = () => {
               borderRadius: '8px',
               padding: '20px',
               backgroundColor: '#f9f9f9',
-              boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+              boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+              position: 'relative'
             }}>
-              <h3 style={{
-                color: '#2c3e50',
-                marginBottom: '10px',
-                fontSize: '1.4em'
-              }}>{recipe.title}</h3>
+              <div style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'flex-start',
+                marginBottom: '10px'
+              }}>
+                <h3 style={{
+                  color: '#2c3e50',
+                  margin: '0',
+                  fontSize: '1.4em',
+                  flex: 1
+                }}>{recipe.title}</h3>
+                <button
+                  onClick={(e) => handleToggleFavorite(e, recipe.id)}
+                  style={{
+                    background: 'none',
+                    border: 'none',
+                    fontSize: '20px',
+                    cursor: 'pointer',
+                    padding: '4px',
+                    borderRadius: '4px',
+                    marginLeft: '10px'
+                  }}
+                  title={isFavorite(recipe.id) ? 'Remove from favorites' : 'Add to favorites'}
+                >
+                  {isFavorite(recipe.id) ? '❤️' : '🤍'}
+                </button>
+              </div>
               <p style={{
                 color: '#666',
                 lineHeight: '1.6',
