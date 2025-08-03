@@ -4,8 +4,6 @@ const useRecipeStore = create((set, get) => ({
   recipes: [],
   searchTerm: '',
   filteredRecipes: [],
-  favorites: [], // Array to store favorite recipe IDs
-  recommendations: [], // Array to store recommended recipes
   
   // Basic CRUD operations
   addRecipe: (newRecipe) => set((state) => {
@@ -18,8 +16,7 @@ const useRecipeStore = create((set, get) => ({
   
   setRecipes: (recipes) => set((state) => ({
     recipes,
-    filteredRecipes: get().filterRecipesByTerm(recipes, state.searchTerm),
-    recommendations: get().generateRecommendations(recipes, state.favorites)
+    filteredRecipes: get().filterRecipesByTerm(recipes, state.searchTerm)
   })),
   
   deleteRecipe: (id) => set((state) => {
@@ -94,115 +91,6 @@ const useRecipeStore = create((set, get) => ({
   clearFilters: () => set((state) => ({
     searchTerm: '',
     filteredRecipes: state.recipes
-  })),
-
-  // Favorites functionality
-  addFavorite: (recipeId) => set((state) => {
-    if (state.favorites.includes(recipeId)) {
-      return state; // Already in favorites
-    }
-    const updatedFavorites = [...state.favorites, recipeId];
-    return { 
-      favorites: updatedFavorites,
-      recommendations: get().generateRecommendations(state.recipes, updatedFavorites)
-    };
-  }),
-  
-  removeFavorite: (recipeId) => set((state) => {
-    const updatedFavorites = state.favorites.filter(id => id !== recipeId);
-    return {
-      favorites: updatedFavorites,
-      recommendations: get().generateRecommendations(state.recipes, updatedFavorites)
-    };
-  }),
-  
-  toggleFavorite: (recipeId) => {
-    const state = get();
-    if (state.favorites.includes(recipeId)) {
-      state.removeFavorite(recipeId);
-    } else {
-      state.addFavorite(recipeId);
-    }
-  },
-  
-  isFavorite: (recipeId) => {
-    const state = get();
-    return state.favorites.includes(recipeId);
-  },
-
-  // Recommendations system
-  generateRecommendations: (recipes, favorites) => {
-    if (!recipes || !favorites || favorites.length === 0) {
-      return [];
-    }
-
-    // Get favorite recipes to analyze patterns
-    const favoriteRecipes = favorites.map(id => 
-      recipes.find(recipe => recipe.id === id)
-    ).filter(Boolean);
-
-    if (favoriteRecipes.length === 0) {
-      return [];
-    }
-
-    // Extract common ingredients and patterns from favorites
-    const favoriteIngredients = new Set();
-    const favoriteDifficulties = new Set();
-    let avgCookingTime = 0;
-
-    favoriteRecipes.forEach(recipe => {
-      if (recipe.ingredients) {
-        recipe.ingredients.forEach(ingredient => {
-          favoriteIngredients.add(ingredient.toLowerCase());
-        });
-      }
-      if (recipe.difficulty) {
-        favoriteDifficulties.add(recipe.difficulty);
-      }
-      if (recipe.cookingTime) {
-        avgCookingTime += recipe.cookingTime;
-      }
-    });
-
-    avgCookingTime = avgCookingTime / favoriteRecipes.length;
-
-    // Find recipes that match user preferences but aren't already favorites
-    const recommendations = recipes
-      .filter(recipe => !favorites.includes(recipe.id)) // Exclude already favorited
-      .map(recipe => {
-        let score = 0;
-
-        // Score based on shared ingredients
-        if (recipe.ingredients) {
-          const sharedIngredients = recipe.ingredients.filter(ingredient =>
-            favoriteIngredients.has(ingredient.toLowerCase())
-          ).length;
-          score += sharedIngredients * 2;
-        }
-
-        // Score based on difficulty preference
-        if (recipe.difficulty && favoriteDifficulties.has(recipe.difficulty)) {
-          score += 3;
-        }
-
-        // Score based on cooking time preference (closer = better)
-        if (recipe.cookingTime && avgCookingTime) {
-          const timeDifference = Math.abs(recipe.cookingTime - avgCookingTime);
-          if (timeDifference <= 15) score += 2;
-          else if (timeDifference <= 30) score += 1;
-        }
-
-        return { ...recipe, recommendationScore: score };
-      })
-      .filter(recipe => recipe.recommendationScore > 0)
-      .sort((a, b) => b.recommendationScore - a.recommendationScore)
-      .slice(0, 6); // Return top 6 recommendations
-
-    return recommendations;
-  },
-
-  updateRecommendations: () => set((state) => ({
-    recommendations: get().generateRecommendations(state.recipes, state.favorites)
   }))
 }));
 

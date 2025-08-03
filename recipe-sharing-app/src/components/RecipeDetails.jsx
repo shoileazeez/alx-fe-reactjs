@@ -9,15 +9,9 @@ const RecipeDetails = () => {
   const navigate = useNavigate();
   const [isEditing, setIsEditing] = useState(false);
   
-  const { recipe, toggleFavorite, isFavorite } = useRecipeStore(state => ({
-    recipe: state.recipes.find(recipe => recipe.id === parseInt(id)),
-    toggleFavorite: state.toggleFavorite,
-    isFavorite: state.isFavorite
-  }));
-
-  const handleToggleFavorite = () => {
-    toggleFavorite(recipe.id);
-  };
+  const recipe = useRecipeStore(state => 
+    state.recipes.find(recipe => recipe.id === parseInt(id))
+  );
 
   if (!recipe) {
     return (
@@ -89,39 +83,13 @@ const RecipeDetails = () => {
           padding: '30px',
           boxShadow: '0 4px 6px rgba(0,0,0,0.1)'
         }}>
-          <div style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'flex-start',
-            marginBottom: '20px'
+          <h1 style={{
+            color: '#2c3e50',
+            marginBottom: '20px',
+            fontSize: '2.5em'
           }}>
-            <h1 style={{
-              color: '#2c3e50',
-              margin: '0',
-              fontSize: '2.5em',
-              flex: 1
-            }}>
-              {recipe.title}
-            </h1>
-            <button
-              onClick={handleToggleFavorite}
-              style={{
-                background: 'none',
-                border: '2px solid #e74c3c',
-                borderRadius: '8px',
-                padding: '10px 15px',
-                cursor: 'pointer',
-                fontSize: '18px',
-                marginLeft: '20px',
-                backgroundColor: isFavorite(recipe.id) ? '#e74c3c' : 'transparent',
-                color: isFavorite(recipe.id) ? 'white' : '#e74c3c',
-                transition: 'all 0.3s ease'
-              }}
-              title={isFavorite(recipe.id) ? 'Remove from favorites' : 'Add to favorites'}
-            >
-              {isFavorite(recipe.id) ? '❤️ Favorited' : '🤍 Add to Favorites'}
-            </button>
-          </div>
+            {recipe.title}
+          </h1>
           
           <div style={{
             color: '#7f8c8d',
