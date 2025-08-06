@@ -31,12 +31,7 @@ export const searchUsers = async (searchParams) => {
     query = query.trim();
     if (!query) query = 'type:user'; // Default query if no params provided
     
-    const response = await axios.get(`https://api.github.com/search/users`, {
-      params: {
-        q: query,
-        page,
-        per_page: perPage
-      },
+    const response = await axios.get(`https://api.github.com/search/users?q=${encodeURIComponent(query)}`, {
       headers: {
         'Authorization': `Bearer ${import.meta.env.VITE_APP_GITHUB_API_KEY}`,
         'Accept': 'application/vnd.github.v3+json'
