@@ -1,0 +1,193 @@
+[
+  {
+    "id": 1,
+    "title": "Spaghetti Carbonara",
+    "summary": "A classic Italian pasta dish with eggs, cheese, bacon, and black pepper.",
+    "image": "https://via.placeholder.com/400x300/FFB6C1/000000?text=Spaghetti+Carbonara",
+    "prepTime": "15 mins",
+    "cookTime": "20 mins",
+    "servings": "4",
+    "ingredients": [
+      "400g spaghetti",
+      "200g pancetta or bacon, diced",
+      "4 large eggs",
+      "100g Pecorino Romano cheese, grated",
+      "50g Parmesan cheese, grated",
+      "Black pepper, freshly ground",
+      "Salt to taste",
+      "2 cloves garlic, minced"
+    ],
+    "instructions": [
+      "Bring a large pot of salted water to boil and cook spaghetti according to package directions.",
+      "While pasta cooks, heat a large skillet over medium heat and cook pancetta until crispy.",
+      "In a bowl, whisk together eggs, both cheeses, and plenty of black pepper.",
+      "Reserve 1 cup pasta water before draining the spaghetti.",
+      "Add hot pasta to the skillet with pancetta and toss to combine.",
+      "Remove from heat and quickly stir in egg mixture, adding pasta water as needed.",
+      "Serve immediately with extra cheese and black pepper."
+    ],
+    "tips": "The key to perfect carbonara is working quickly and using the pasta's heat to cook the eggs without scrambling them."
+  },
+  {
+    "id": 2,
+    "title": "Chicken Tikka Masala",
+    "summary": "Chunks of grilled chicken (tikka) cooked in a smooth buttery & creamy tomato based gravy.",
+    "image": "https://via.placeholder.com/400x300/FFA500/000000?text=Chicken+Tikka+Masala",
+    "prepTime": "30 mins",
+    "cookTime": "45 mins",
+    "servings": "6",
+    "ingredients": [
+      "1 kg chicken breast, cut into chunks",
+      "1 cup plain yogurt",
+      "2 tbsp lemon juice",
+      "2 tsp garam masala",
+      "1 tsp cumin",
+      "1 tsp cayenne pepper",
+      "4 cloves garlic, minced",
+      "1 inch ginger, grated",
+      "400ml coconut milk",
+      "400g canned tomatoes",
+      "1 large onion, diced",
+      "2 tbsp butter",
+      "Fresh cilantro for garnish"
+    ],
+    "instructions": [
+      "Marinate chicken in yogurt, lemon juice, and half the spices for at least 30 minutes.",
+      "Grill or pan-fry chicken pieces until cooked through and slightly charred.",
+      "In a large pan, sauté onions until golden brown.",
+      "Add remaining garlic, ginger, and spices. Cook for 1 minute.",
+      "Add canned tomatoes and simmer for 10 minutes.",
+      "Stir in coconut milk and butter, simmer for 5 minutes.",
+      "Add cooked chicken and simmer for 10 more minutes.",
+      "Garnish with cilantro and serve with rice or naan."
+    ],
+    "tips": "For extra flavor, marinate the chicken overnight. Adjust spice levels to your preference."
+  },
+  {
+    "id": 3,
+    "title": "Beef Tacos",
+    "summary": "Soft tortillas filled with seasoned ground beef, lettuce, cheese, and salsa.",
+    "image": "https://via.placeholder.com/400x300/90EE90/000000?text=Beef+Tacos",
+    "prepTime": "15 mins",
+    "cookTime": "15 mins",
+    "servings": "4",
+    "ingredients": [
+      "500g ground beef",
+      "8 soft flour tortillas",
+      "1 packet taco seasoning",
+      "1 cup shredded lettuce",
+      "1 cup shredded cheddar cheese",
+      "2 tomatoes, diced",
+      "1 onion, diced",
+      "1/2 cup sour cream",
+      "1/2 cup salsa",
+      "1 avocado, sliced",
+      "Lime wedges for serving"
+    ],
+    "instructions": [
+      "Brown ground beef in a large skillet over medium-high heat.",
+      "Drain excess fat and add taco seasoning with 1/4 cup water.",
+      "Simmer for 5 minutes until sauce thickens.",
+      "Warm tortillas in microwave or dry skillet.",
+      "Fill each tortilla with beef mixture.",
+      "Top with lettuce, cheese, tomatoes, and onions.",
+      "Serve with sour cream, salsa, avocado, and lime wedges."
+    ],
+    "tips": "Let everyone build their own tacos for a fun, interactive meal!"
+  },
+  {
+    "id": 4,
+    "title": "Caesar Salad",
+    "summary": "Crisp romaine lettuce with parmesan cheese, croutons, and creamy Caesar dressing.",
+    "image": "https://via.placeholder.com/400x300/98FB98/000000?text=Caesar+Salad",
+    "prepTime": "20 mins",
+    "cookTime": "10 mins",
+    "servings": "4",
+    "ingredients": [
+      "2 large heads romaine lettuce, chopped",
+      "1/2 cup parmesan cheese, grated",
+      "2 cups croutons",
+      "3 cloves garlic, minced",
+      "2 anchovy fillets (optional)",
+      "1/4 cup lemon juice",
+      "1 tsp Dijon mustard",
+      "1/2 cup olive oil",
+      "1 egg yolk",
+      "Salt and pepper to taste"
+    ],
+    "instructions": [
+      "Wash and dry romaine lettuce thoroughly, then chop into bite-sized pieces.",
+      "For dressing, mash garlic and anchovies into a paste.",
+      "Whisk in lemon juice, mustard, and egg yolk.",
+      "Slowly drizzle in olive oil while whisking to emulsify.",
+      "Season with salt and pepper.",
+      "Toss lettuce with dressing until well coated.",
+      "Top with parmesan cheese and croutons.",
+      "Serve immediately."
+    ],
+    "tips": "For food safety, use pasteurized eggs or substitute with mayonnaise for the egg yolk."
+  },
+  {
+    "id": 5,
+    "title": "Chocolate Chip Cookies",
+    "summary": "Soft and chewy cookies loaded with chocolate chips, perfect for dessert.",
+    "image": "https://via.placeholder.com/400x300/DEB887/000000?text=Chocolate+Chip+Cookies",
+    "prepTime": "15 mins",
+    "cookTime": "12 mins",
+    "servings": "24 cookies",
+    "ingredients": [
+      "2 1/4 cups all-purpose flour",
+      "1 tsp baking soda",
+      "1 tsp salt",
+      "1 cup butter, softened",
+      "3/4 cup granulated sugar",
+      "3/4 cup brown sugar, packed",
+      "2 large eggs",
+      "2 tsp vanilla extract",
+      "2 cups chocolate chips"
+    ],
+    "instructions": [
+      "Preheat oven to 375°F (190°C).",
+      "Mix flour, baking soda, and salt in a bowl.",
+      "In a large bowl, beat butter and both sugars until creamy.",
+      "Beat in eggs and vanilla extract.",
+      "Gradually blend in flour mixture.",
+      "Stir in chocolate chips.",
+      "Drop rounded tablespoons onto ungreased cookie sheets.",
+      "Bake 9-11 minutes or until golden brown.",
+      "Cool on baking sheet for 2 minutes before removing."
+    ],
+    "tips": "For chewier cookies, slightly underbake them. For crispier cookies, bake a minute or two longer."
+  },
+  {
+    "id": 6,
+    "title": "Margherita Pizza",
+    "summary": "Classic Italian pizza with fresh tomatoes, mozzarella cheese, and basil leaves.",
+    "image": "https://via.placeholder.com/400x300/FF6347/000000?text=Margherita+Pizza",
+    "prepTime": "2 hours",
+    "cookTime": "15 mins",
+    "servings": "4",
+    "ingredients": [
+      "1 pizza dough (store-bought or homemade)",
+      "1/2 cup pizza sauce",
+      "8 oz fresh mozzarella, sliced",
+      "2 large tomatoes, sliced",
+      "Fresh basil leaves",
+      "2 tbsp olive oil",
+      "Salt and pepper to taste",
+      "Cornmeal for dusting"
+    ],
+    "instructions": [
+      "Preheat oven to 475°F (245°C) with pizza stone if available.",
+      "Roll out pizza dough on floured surface.",
+      "Transfer to pizza pan dusted with cornmeal.",
+      "Spread pizza sauce evenly over dough.",
+      "Arrange mozzarella slices over sauce.",
+      "Add tomato slices and season with salt and pepper.",
+      "Drizzle with olive oil.",
+      "Bake 12-15 minutes until crust is golden and cheese bubbles.",
+      "Top with fresh basil leaves before serving."
+    ],
+    "tips": "For best results, use a pizza stone and let the dough come to room temperature before rolling."
+  }
+]
