@@ -1,6 +1,6 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import PostsComponent from './PostsComponent';
+import PostsComponent from './components/PostsComponent';
 import './App.css'
 
 // Create a client instance for React Query
